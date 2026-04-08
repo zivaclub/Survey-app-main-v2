@@ -1,8 +1,9 @@
 import { useState, useEffect, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Bolt, CheckCircle, ChevronRight, Timer, Award, BarChart3, Lightbulb, Users, Gauge, Dumbbell, User, Share2, TrendingUp } from 'lucide-react';
+import { CheckCircle, ChevronRight, Timer, Award, BarChart3, Lightbulb, Users, Gauge, Dumbbell, User, Share2, TrendingUp } from 'lucide-react';
 import { QUESTIONS } from './constants';
 import { AppState } from './types';
+import logo from './logo.svg';
 
 export default function App() {
   const [appState, setAppState] = useState<AppState>('landing');
@@ -119,7 +120,7 @@ function Header({ onExit }: { onExit: () => void }) {
   return (
     <header className="bg-surface-container-low text-primary shadow-[0_32px_32px_rgba(186,246,245,0.08)] flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50">
       <div className="flex items-center gap-3">
-        <Bolt className="w-6 h-6" />
+        <img src={logo} alt="Ziva Club logo" className="w-6 h-6" />
         <h1 className="font-manrope font-black uppercase tracking-tight text-xl">ZIVA CLUB</h1>
       </div>
       <button 
@@ -373,32 +374,7 @@ function CompletionPage({ onReset }: { onReset: () => void; key?: string }) {
         Your performance data has been synchronized with the cloud.
       </p>
 
-      <div className="w-full grid grid-cols-2 gap-4 mb-10">
-        <div className="col-span-2 relative overflow-hidden rounded-lg bg-surface-container-high p-6 flex flex-col justify-between h-48">
-          <div className="absolute left-0 top-6 bottom-6 w-1 bg-secondary rounded-r-full" />
-          <div className="relative z-10">
-            <span className="inline-block px-3 py-1 rounded-full bg-surface-variant text-secondary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">New Report Ready</span>
-            <h3 className="text-2xl font-extrabold leading-tight mb-2 text-on-surface">Custom Performance Insights</h3>
-            <p className="text-sm text-on-surface-variant">We've analyzed your results against 1,200 pro data points.</p>
-          </div>
-          <BarChart3 className="absolute right-[-20px] bottom-[-20px] w-32 h-32 text-primary opacity-20 rotate-12" />
-        </div>
-
-        <div className="bg-surface-container-low rounded-lg p-4 flex flex-col gap-2 relative group overflow-hidden">
-          <Gauge className="text-primary w-5 h-5" />
-          <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Flow State</div>
-            <div className="text-2xl font-extrabold text-on-surface">94%</div>
-          </div>
-        </div>
-        <div className="bg-surface-container-low rounded-lg p-4 flex flex-col gap-2 relative group overflow-hidden">
-          <TrendingUp className="text-secondary w-5 h-5" />
-          <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Efficiency</div>
-            <div className="text-2xl font-extrabold text-on-surface">+12.4</div>
-          </div>
-        </div>
-      </div>
+      
 
       <div className="w-full flex flex-col gap-4">
         <button 
@@ -407,10 +383,7 @@ function CompletionPage({ onReset }: { onReset: () => void; key?: string }) {
         >
           Back to Dashboard
         </button>
-        <button className="w-full py-4 rounded-full bg-surface-container-highest border border-outline-variant/20 text-on-surface font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 active:scale-[0.98] transition-all">
-          <Share2 className="w-4 h-4" />
-          Share Achievements
-        </button>
+        
       </div>
     </motion.div>
   );
